@@ -1,4 +1,4 @@
-package dio.academiaspringapi;
+package dio.academia.spring.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
