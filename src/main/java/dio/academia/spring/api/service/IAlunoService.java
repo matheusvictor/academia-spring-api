@@ -1,6 +1,7 @@
 package dio.academia.spring.api.service;
 
 import dio.academia.spring.api.entity.Aluno;
+import dio.academia.spring.api.entity.AvaliacaoFisica;
 import dio.academia.spring.api.entity.form.AlunoForm;
 import dio.academia.spring.api.entity.form.AlunoUpdateForm;
 
@@ -41,4 +42,6 @@ public interface IAlunoService {
    * @param id - id do Aluno que será removido.
    */
   void delete(Long id);
+
+    List<AvaliacaoFisica> getAllAvaliacaoFisicaById(Long id);
 }

@@ -1,6 +1,7 @@
 package dio.academia.spring.api.service;
 
 import dio.academia.spring.api.entity.Aluno;
+import dio.academia.spring.api.entity.AvaliacaoFisica;
 import dio.academia.spring.api.entity.form.AlunoForm;
 import dio.academia.spring.api.entity.form.AlunoUpdateForm;
 import dio.academia.spring.api.repository.AlunoRepository;
@@ -13,7 +14,7 @@ import java.util.List;
 public class AlunoServiceImpl implements IAlunoService {
 
     @Autowired
-    private AlunoRepository repository;
+    private AlunoRepository alunoRepository;
 
     @Override
     public Aluno create(AlunoForm form) {
@@ -23,7 +24,7 @@ public class AlunoServiceImpl implements IAlunoService {
         aluno.setBairro(form.getBairro());
         aluno.setDataDeNascimento(form.getDataDeNascimento());
 
-        this.repository.save(aluno);
+        this.alunoRepository.save(aluno);
         return aluno;
     }
 
@@ -34,7 +35,13 @@ public class AlunoServiceImpl implements IAlunoService {
 
     @Override
     public List<Aluno> getAll() {
-        return this.repository.findAll();
+        return this.alunoRepository.findAll();
+    }
+
+    @Override
+    public List<AvaliacaoFisica> getAllAvaliacaoFisicaById(Long id) {
+        Aluno aluno = this.alunoRepository.findById(id).get();
+        return aluno.getAvaliacoes();
     }
 
     @Override
