@@ -4,6 +4,7 @@ import dio.academia.spring.api.entity.Aluno;
 import dio.academia.spring.api.entity.AvaliacaoFisica;
 import dio.academia.spring.api.entity.form.AlunoForm;
 import dio.academia.spring.api.service.AlunoServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class AlunoController {
     private AlunoServiceImpl alunoService;
 
     @PostMapping
-    public Aluno create(@RequestBody AlunoForm form) {
+    public Aluno create(@Valid @RequestBody AlunoForm form) {
         return this.alunoService.create(form);
     }
 
